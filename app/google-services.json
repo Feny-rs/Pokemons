@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373799007026",
+    "project_id": "pokemons-261a0",
+    "storage_bucket": "pokemons-261a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373799007026:android:882061df3b4c4c0e3e5d2b",
+        "android_client_info": {
+          "package_name": "com.feny.pokemons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373799007026-jm3vhbonc4j30hq3nuih2uvu7ek9qr37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwruSUxTIjmxVMiPfG3gl_UpMkflRsgbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373799007026-jm3vhbonc4j30hq3nuih2uvu7ek9qr37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

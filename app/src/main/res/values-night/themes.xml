@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Pokemons" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/theme_darker</item>
+        <item name="colorPrimaryVariant">@color/theme_darker</item>
+        <item name="colorOnPrimary">@color/theme_darker</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/theme_darker_sign</item>
+        <item name="colorSecondaryVariant">@color/theme_darker_sign</item>
+        <item name="colorOnSecondary">@color/theme_soft_gray</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/theme_darker</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by fenyrahmasari on 05/09/2023, 13:51
+  ~  * Copyright (c) 2023 . All rights reserved.
+  ~  * Last modified 05/09/2023, 13:51
+  ~  */
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/theme_darker"
+    android:paddingHorizontal="@dimen/dimen_20dp"
+    tools:context=".ui.authentication.LoginActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progress_load"
+        android:layout_width="375dp"
+        android:layout_height="375dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_lm62qpcg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:fontFamily="monospace"
+        android:textColor="@color/theme_sign"
+        android:textSize="48dp"
+        android:layout_marginBottom="22dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/form"/>
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/progress_load">
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_input"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="5dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:fontFamily="monospace"
+            android:textColor="@color/theme_sign"
+            android:textColorHint="@color/theme_soft_gray"
+            android:hint="Email"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_baseline_https_24"
+            android:drawablePadding="5dp"
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:background="@drawable/bg_input"
+            android:paddingHorizontal="20dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/theme_sign"
+            android:textColorHint="@color/theme_soft_gray"
+            android:hint="Password"/>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="42dp"
+        android:backgroundTint="@color/theme_darker_sign"
+        app:cornerRadius="100dp"
+        android:textAllCaps="false"
+        android:text="Login"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:textSize="@dimen/text_size_16sp"
+        android:textColor="@color/theme_darker"
+        app:layout_constraintTop_toBottomOf="@+id/form"
+        tools:layout_editor_absoluteX="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/lineSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="monospace"
+        android:textSize="13sp"
+        android:textColor="@color/theme_soft_gray"
+        android:textAlignment="center"
+        android:text="Haven't an account? Make your account now!"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

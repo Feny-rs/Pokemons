@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="list_item_pokemon_image_size">72dp</dimen>
+    <dimen name="type_element_size">32dp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="text_size_32sp">32sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="min_width_stat_label">50dp</dimen>
+    <dimen name="image_size_avatar_detail">124dp</dimen>
+
+    <dimen name="detail_guideline_avatar_begin_secondary">88dp</dimen>
+    <dimen name="detail_guideline_top_begin_secondary">56dp</dimen>
+
+    <dimen name="detail_guideline_avatar_begin">172dp</dimen>
+    <dimen name="detail_guideline_top_begin">140dp</dimen>
+    <dimen name="dimen_32dp">32dp</dimen>
+</resources>

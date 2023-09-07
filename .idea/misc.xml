@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/bg_bottom_navbar.xml" value="0.2245" />
+        <entry key="app/src/main/res/drawable/bg_input.xml" value="0.2205" />
+        <entry key="app/src/main/res/drawable/bottom_navigation_color_selector.xml" value="0.135" />
+        <entry key="app/src/main/res/drawable/favorite.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/favorite_border.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/favorite_button_selector.xml" value="0.267" />
+        <entry key="app/src/main/res/drawable/favorite_yellow.xml" value="0.2245" />
+        <entry key="app/src/main/res/drawable/ic_baseline_https_24.xml" value="0.2205" />
+        <entry key="app/src/main/res/drawable/rounded_border.xml" value="0.1365" />
+        <entry key="app/src/main/res/layout/activity_listing_pokemons.xml" value="0.13055555555555556" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.296875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28177083333333336" />
+        <entry key="app/src/main/res/layout/activity_main_features_view.xml" value="0.3102447509765625" />
+        <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.37792867024739585" />
+        <entry key="app/src/main/res/layout/activity_pokemon_list.xml" value="0.296875" />
+        <entry key="app/src/main/res/layout/activity_regist.xml" value="0.28177083333333336" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25348646375868056" />
+        <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_favorite_pokemons.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/fragment_listing_pokemons.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/fragment_profile_pokemons.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_search_pokemons.xml" value="0.296875" />
+        <entry key="app/src/main/res/layout/item_ability.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_move.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_pokemon.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/pokemon_item.xml" value="0.3902069091796876" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29583333333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
