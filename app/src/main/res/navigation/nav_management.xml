@@ -3,24 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_management"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/nav_management"
     app:startDestination="@id/listFragment">
 
     <fragment
         android:id="@+id/listFragment"
         android:name="com.feny.pokemons.ui.listing.PokemonFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_pokemon" />
+        android:label="Pokemons"
+        tools:layout="@layout/fragment_pokemon" >
+        <action
+            android:id="@+id/action_listFragment_to_detailPokemonFragment"
+            app:destination="@id/detailPokemonFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.feny.pokemons.ui.listing.FavoriteFragment"
-        android:label="Dashboard"
+        android:label="Favorite"
         tools:layout="@layout/fragment_search_pokemons" />
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.feny.pokemons.ui.listing.ProfileFragment"
-        android:label="Notifications"
+        android:label="User"
         tools:layout="@layout/fragment_favorite_pokemons" />
+
+    <fragment
+        android:id="@+id/detailPokemonFragment"
+        android:name="com.feny.pokemons.ui.listing.DetailPokemonFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_pokemon_detail" >
+        <argument
+            android:name="pokemonNumber"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
