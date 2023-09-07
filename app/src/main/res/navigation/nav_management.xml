@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.feny.pokemons.ui.listing.ListingPokemonsView"
+        android:name="com.feny.pokemons.ui.listing.PokemonFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_listing_pokemons" />
+        tools:layout="@layout/fragment_pokemon" />
 
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.feny.pokemons.ui.listing.SearchPokemonsView"
+        android:id="@+id/favoriteFragment"
+        android:name="com.feny.pokemons.ui.listing.FavoriteFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_search_pokemons" />
 
     <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.feny.pokemons.ui.listing.FavoritePokemonView"
+        android:id="@+id/profileFragment"
+        android:name="com.feny.pokemons.ui.listing.ProfileFragment"
         android:label="Notifications"
         tools:layout="@layout/fragment_favorite_pokemons" />
 

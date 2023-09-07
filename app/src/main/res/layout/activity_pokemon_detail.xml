@@ -1,98 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutDetail"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvlPokeInfo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/custom_toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <ImageView
-            android:id="@+id/ivImage"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
-
-        <LinearLayout
-            android:id="@+id/types_linear_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="4dp"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toBottomOf="@id/ivImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:id="@+id/pokemon_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:fontFamily="monospace"
-                android:textColor="@color/theme_darker"
-                android:textSize="24sp"
-                tools:text="#25" />
-
-            <TextView
-                android:id="@+id/poke_info_type_one"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_border"
-                android:fontFamily="monospace"
-                android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:lines="1"
-                android:paddingVertical="4dp"
-                android:paddingHorizontal="8dp"
-                android:textColor="@color/theme_darker"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                tools:text="grass" />
-
-            <TextView
-                android:id="@+id/poke_info_type_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_border"
-                android:fontFamily="monospace"
-                android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:lines="1"
-                android:paddingVertical="4dp"
-                android:paddingHorizontal="8dp"
-                android:textColor="@color/theme_darker"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                tools:text="electric"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/detailLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-
-            android:gravity="center_horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/types_linear_layout">
-
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/card_about" />
+</FrameLayout>
