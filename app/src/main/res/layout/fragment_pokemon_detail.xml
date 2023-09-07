@@ -1,7 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
@@ -14,7 +15,6 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutDetail"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -33,7 +33,7 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_launcher"
+                tools:src="@mipmap/ic_launcher"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgBack" />
@@ -42,10 +42,10 @@
                 android:id="@+id/shine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/ivImage"
-                app:layout_constraintEnd_toEndOf="@+id/ivImage"
-                app:layout_constraintStart_toStartOf="@+id/ivImage"
-                app:layout_constraintTop_toBottomOf="@+id/ivImage" />
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgBack" />
 
             <TextView
                 android:id="@+id/pokemonsId"
@@ -62,64 +62,15 @@
                 app:layout_constraintTop_toBottomOf="@id/ivImage"
                 tools:text="Bulbasaur" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/types_linear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
+                tools:listitem="@layout/item_types"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pokemonsId">
-
-                <TextView
-                    android:id="@+id/poke_info_type_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/rounded_border"
-                    android:fontFamily="monospace"
-                    android:gravity="center"
-                    android:lines="1"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
-                    android:textColor="@color/theme_darker"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="grass" />
-
-                <ImageView
-                    android:id="@+id/icon1"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/pokemonseu" />
-
-                <TextView
-                    android:id="@+id/poke_info_type_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/rounded_border"
-                    android:fontFamily="monospace"
-                    android:gravity="center"
-                    android:lines="1"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="4dp"
-                    android:textColor="@color/theme_darker"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    tools:text="electric" />
-
-                <ImageView
-                    android:id="@+id/icon2"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/pokemonseu" />
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/pokemonsId"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvlPokeInfo"
@@ -134,4 +85,4 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

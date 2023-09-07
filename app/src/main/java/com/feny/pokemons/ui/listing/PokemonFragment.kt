@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.feny.pokemons.databinding.FragmentPokemonBinding
-import com.feny.pokemons.model.PokemonListItem
 import com.feny.pokemons.model.PokemonListResponse
 import com.feny.pokemons.presenter.PokemonService
 import com.feny.pokemons.ui.adapter.PokemonAdapter
@@ -19,7 +19,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 class PokemonFragment : Fragment() {
 
@@ -44,6 +43,14 @@ class PokemonFragment : Fragment() {
         adapter = PokemonAdapter()
         binding.rvPokemon.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPokemon.adapter = adapter
+
+        adapter.setOnItemClickListener(object : PokemonAdapter.OnItemClickListener {
+            override fun onItemClick(pokemonNumber: Int) {
+                // Handle item click here, you have the Pokemon number
+                val action = PokemonFragmentDirections.actionListFragmentToDetailPokemonFragment(pokemonNumber)
+                findNavController().navigate(action)
+            }
+        })
 
         // Initialize the EditText
         val editText = binding.searchInput.keyword
@@ -105,7 +112,8 @@ class PokemonFragment : Fragment() {
                     val newPokemonList = response.body()?.results ?: emptyList()
 
                     // Add the new items to the adapter
-                    adapter.setPokemonList(newPokemonList)
+                    // Append the new items to the adapter
+                    adapter.addData(newPokemonList)
 
                     // Increment the current page
                     currentPage++

@@ -15,6 +15,7 @@ class PokemonAdapter :
 
     private var pokemonList: List<PokemonListItem> = emptyList()
     private var filteredPokemonList: List<PokemonListItem> = emptyList()
+    private var currentFilterQuery: String = ""
 
     private val VIEW_TYPE_POKEMON = 0
     private val VIEW_TYPE_PROGRESS_BAR = 1
@@ -26,16 +27,41 @@ class PokemonAdapter :
         notifyDataSetChanged()
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(pokemonNumber: Int)
+    }
+
+    private var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
+
     inner class PokemonViewHolder(private val binding: PokemonItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            // Set an item click listener for the adapter
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val parts = filteredPokemonList[position].url.split("/")
+                    val pokemonNumber = parts[parts.size - 2].toInt()
+
+                    // Call the item click listener with the Pokemon number
+                    itemClickListener?.onItemClick(pokemonNumber)
+                }
+            }
+        }
         @SuppressLint("SetTextI18n")
         fun bind(pokemon: PokemonListItem) {
             binding.pokemonName.text = pokemon.name
-            binding.pokemonNumber.text = "#00${position + 1}"
+            val parts = pokemon.url.split("/")
+            val pokemonNumber = parts[parts.size - 2].toInt()
+            binding.pokemonNumber.text = "#00$pokemonNumber"
 
             // Load Pokemon image using Glide
             val imageUrl =
-                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${position + 1}.png"
+                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonNumber}.png"
             Glide.with(binding.root)
                 .load(imageUrl)
                 .into(binding.pokemonImage)
@@ -93,12 +119,15 @@ class PokemonAdapter :
         }
     }
 
-    fun setPokemonList(newPokemonList: List<PokemonListItem>) {
-        pokemonList = newPokemonList
-        filter("")
+    fun addData(newPokemonList: List<PokemonListItem>) {
+        // Append new data to the existing list
+        pokemonList = pokemonList + newPokemonList
+        // Apply the current filter to the updated list
+        filter(currentFilterQuery)
     }
 
     fun filter(query: String) {
+        currentFilterQuery = query
         val lowerCaseQuery = query.toLowerCase(Locale.getDefault())
         filteredPokemonList = if (query.isEmpty()) {
             pokemonList

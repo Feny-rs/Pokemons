@@ -8,47 +8,29 @@
 
     <TextView
         android:id="@+id/skills"
-        android:layout_width="wrap_content"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:textColor="@color/theme_darker"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        tools:text="grass"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/skills_number"
+        android:fontFamily="monospace"
+        android:textColor="@color/theme_darker"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/skills_number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="grass" />
 
     <TextView
         android:id="@+id/skills_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:textColor="@color/theme_darker"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:textSize="24sp"
-        tools:text="100"
-        app:layout_constraintStart_toEndOf="@id/skills"
-        app:layout_constraintTop_toTopOf="@id/skills"
-        app:layout_constraintBottom_toBottomOf="@id/skills"/>
-
-    <ProgressBar
-        android:id="@+id/pbHp"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:indeterminate="false"
-        android:layout_marginHorizontal="10dp"
-        android:layerType="hardware"
-        android:max="120"
-        android:mirrorForRtl="true"
-        android:progress="10"
+        app:layout_constraintBottom_toBottomOf="@id/skills"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/skills_number"
-        app:layout_constraintTop_toTopOf="@id/skills_number"
-        app:layout_constraintBottom_toBottomOf="@id/skills_number"/>
+        app:layout_constraintTop_toTopOf="@id/skills"
+        tools:text="100" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
