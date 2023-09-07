@@ -18,7 +18,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.feny.pokemons.databinding.ActivityLoginBinding
 import com.feny.pokemons.ui.MainFeaturesView
-import com.feny.pokemons.ui.listing.ListingPokemonsView
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

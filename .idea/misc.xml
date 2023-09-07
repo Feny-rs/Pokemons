@@ -15,11 +15,14 @@
         <entry key="app/src/main/res/layout/activity_listing_pokemons.xml" value="0.13055555555555556" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28177083333333336" />
-        <entry key="app/src/main/res/layout/activity_main_features_view.xml" value="0.3102447509765625" />
-        <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.37792867024739585" />
+        <entry key="app/src/main/res/layout/activity_main_features_view.xml" value="0.16716417910447762" />
+        <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.22310756972111553" />
         <entry key="app/src/main/res/layout/activity_pokemon_list.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/activity_regist.xml" value="0.28177083333333336" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.25348646375868056" />
+        <entry key="app/src/main/res/layout/card_about.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/card_home.xml" value="0.19112627986348124" />
+        <entry key="app/src/main/res/layout/custom_header.xml" value="0.22580645161290322" />
         <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.29583333333333334" />
         <entry key="app/src/main/res/layout/fragment_favorite_pokemons.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22083333333333333" />
@@ -29,7 +32,9 @@
         <entry key="app/src/main/res/layout/item_ability.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/item_move.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/item_pokemon.xml" value="0.12552083333333333" />
-        <entry key="app/src/main/res/layout/pokemon_item.xml" value="0.3902069091796876" />
+        <entry key="app/src/main/res/layout/item_skills.xml" value="0.21189320882161458" />
+        <entry key="app/src/main/res/layout/pokemon_item.xml" value="0.14724884033203128" />
+        <entry key="app/src/main/res/layout/progress_bar.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29583333333333334" />
       </map>
     </option>

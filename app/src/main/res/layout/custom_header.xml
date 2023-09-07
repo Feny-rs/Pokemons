@@ -4,24 +4,36 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progress_load"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_lm62qpcg" />
+
     <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
+        android:id="@+id/keyword"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/bg_input"
         android:drawableStart="@drawable/ic_baseline_search_24"
         android:drawableEnd="@drawable/ic_baseline_close_24"
         android:drawablePadding="5dp"
-        android:paddingHorizontal="20dp"
-        android:textSize="15sp"
-        android:maxLines="1"
-        android:maxLength="30"
         android:fontFamily="monospace"
+        android:hint="Search the pokemons"
+        android:maxLength="30"
+        android:maxLines="1"
+        android:paddingHorizontal="20dp"
         android:textColor="@color/theme_sign"
         android:textColorHint="@color/theme_soft_gray"
-        android:hint="Search the pokemons"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progress_load"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

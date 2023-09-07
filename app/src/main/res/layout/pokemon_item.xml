@@ -16,57 +16,10 @@
         android:layout_marginTop="10dp"
         android:fontFamily="monospace"
         android:textColor="@color/theme_sign"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/types_linear_layout"
         android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="#25" />
-
-    <LinearLayout
-        android:id="@+id/types_linear_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
-        android:layout_marginHorizontal="4dp"
-        app:layout_constraintTop_toTopOf="@id/pokemon_number"
-        app:layout_constraintBottom_toBottomOf="@id/pokemon_number"
-        app:layout_constraintEnd_toStartOf="@+id/pokemon_image"
-        app:layout_constraintStart_toEndOf="@id/pokemon_number">
-
-        <TextView
-            android:id="@+id/poke_info_type_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_border"
-            android:fontFamily="monospace"
-            android:layout_marginEnd="4dp"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:lines="1"
-            android:padding="2dp"
-            android:textColor="@color/theme_sign"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            tools:text="grass" />
-
-        <TextView
-            android:id="@+id/poke_info_type_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_border"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:lines="1"
-            android:padding="2dp"
-            android:textColor="@color/theme_sign"
-            android:textStyle="bold"
-            tools:text="electric"
-            android:textSize="12sp"/>
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/pokemon_name"
@@ -76,7 +29,7 @@
         android:fontFamily="monospace"
         android:gravity="center_vertical"
         android:textColor="@color/theme_sign"
-        android:textSize="36sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/favorite_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +44,7 @@
         android:checked="false"
         android:drawableBottom="@drawable/favorite_button_selector"
         android:paddingBottom="10dp"
+        android:layout_marginEnd="10dp"
         android:textSize="0sp"
         app:layout_constraintBottom_toBottomOf="@+id/pokemon_name"
         app:layout_constraintEnd_toStartOf="@+id/pokemon_image"
@@ -100,7 +54,7 @@
         android:id="@+id/pokemon_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
+        android:src="@drawable/mew"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
