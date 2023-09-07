@@ -1,4 +1,4 @@
-package me.sargunvohra.lib.pokekotlin.model
+package com.feny.pokemons.model
 
 data class EvolutionChain(
     val id: Int,

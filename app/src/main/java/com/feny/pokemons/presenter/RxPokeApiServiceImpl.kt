@@ -1,15 +1,15 @@
-package me.sargunvohra.lib.pokekotlin.client
+package com.feny.pokemons.presenter
 
+import com.feny.pokemons.ui.adapter.ApiResourceAdapter
+import com.feny.pokemons.ui.adapter.NamedApiResourceAdapter
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import me.sargunvohra.lib.pokekotlin.model.ApiResource
-import me.sargunvohra.lib.pokekotlin.model.NamedApiResource
-import me.sargunvohra.lib.pokekotlin.util.ApiResourceAdapter
-import me.sargunvohra.lib.pokekotlin.util.NamedApiResourceAdapter
+import com.feny.pokemons.model.ApiResource
+import com.feny.pokemons.model.NamedApiResource
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 internal class RxPokeApiServiceImpl(
@@ -31,7 +31,7 @@ internal class RxPokeApiServiceImpl(
             }.create()
         )
     )
-    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
     .client(OkHttpClient.Builder().(config.okHttpConfig)().build())
     .build()
     .create(RxPokeApiService::class.java)

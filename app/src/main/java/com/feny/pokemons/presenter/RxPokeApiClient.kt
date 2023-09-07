@@ -1,4 +1,4 @@
-package me.sargunvohra.lib.pokekotlin.client
+package com.feny.pokemons.presenter
 
 class RxPokeApiClient(
     clientConfig: ClientConfig = ClientConfig()

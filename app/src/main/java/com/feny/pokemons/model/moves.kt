@@ -1,4 +1,4 @@
-package me.sargunvohra.lib.pokekotlin.model
+package com.feny.pokemons.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,3 +1,3 @@
-package me.sargunvohra.lib.pokekotlin.client
+package com.feny.pokemons.presenter
 
 class ErrorResponse(val code: Int, message: String) : Throwable("($code) $message")

@@ -1,4 +1,4 @@
-package me.sargunvohra.lib.pokekotlin.client
+package com.feny.pokemons.presenter
 
 import java.util.concurrent.TimeUnit
 import okhttp3.HttpUrl
