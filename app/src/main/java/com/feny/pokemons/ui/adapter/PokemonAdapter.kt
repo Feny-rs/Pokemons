@@ -16,6 +16,8 @@ class PokemonAdapter :
     private var pokemonList: List<PokemonListItem> = emptyList()
     private var filteredPokemonList: List<PokemonListItem> = emptyList()
     private var currentFilterQuery: String = ""
+    private var favoritePokemonSet = mutableSetOf<Int>()
+    private var favoritePokemonIds: List<Int> = emptyList()
 
     private val VIEW_TYPE_POKEMON = 0
     private val VIEW_TYPE_PROGRESS_BAR = 1
@@ -65,6 +67,19 @@ class PokemonAdapter :
             Glide.with(binding.root)
                 .load(imageUrl)
                 .into(binding.pokemonImage)
+
+            binding.favoriteButton.isChecked = favoritePokemonSet.contains(pokemonNumber)
+            binding.favoriteButton.setOnClickListener {
+                val isFavorite = binding.favoriteButton.isChecked
+                if (isFavorite) {
+                    favoritePokemonSet.add(pokemonNumber)
+                } else {
+                    favoritePokemonSet.remove(pokemonNumber)
+                }
+                notifyDataSetChanged()
+
+                // TODO: Update the list of favorite Pokemon in your data storage (SharedPreferences or Room).
+            }
         }
     }
 
@@ -136,6 +151,11 @@ class PokemonAdapter :
                 pokemon.name.toLowerCase(Locale.getDefault()).contains(lowerCaseQuery)
             }
         }
+        notifyDataSetChanged()
+    }
+
+    fun setFavoritePokemonIds(ids: List<Int>) {
+        favoritePokemonIds = ids
         notifyDataSetChanged()
     }
 }
