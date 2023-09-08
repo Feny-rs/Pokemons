@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_bottom_navbar.xml" value="0.2245" />
+        <entry key="app/src/main/res/drawable/bg_info.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/bg_input.xml" value="0.2205" />
+        <entry key="app/src/main/res/drawable/bg_input_v2.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/bottom_navigation_color_selector.xml" value="0.135" />
         <entry key="app/src/main/res/drawable/favorite.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/favorite_border.xml" value="0.1" />
@@ -35,7 +37,7 @@
         <entry key="app/src/main/res/layout/item_move.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/item_pokemon.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/item_skills.xml" value="0.21189320882161458" />
-        <entry key="app/src/main/res/layout/item_types.xml" value="0.25268807151100864" />
+        <entry key="app/src/main/res/layout/item_types.xml" value="1.42410683371804" />
         <entry key="app/src/main/res/layout/pokemon_item.xml" value="0.14724884033203128" />
         <entry key="app/src/main/res/layout/progress_bar.xml" value="0.14114583333333333" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29583333333333334" />
