@@ -11,25 +11,21 @@ import com.feny.pokemons.model.PokemonListItem
 import com.feny.pokemons.model.PokemonResponse
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import java.util.*
-import kotlin.collections.ArrayList
 
-class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    // Firebase
-    private val userId = FirebaseAuth.getInstance().currentUser?.uid
-    private val favoritesRef = FirebaseDatabase.getInstance().getReference("users/$userId/favorites")
+class FavoriteAdapter :
+RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var pokemonList: List<PokemonListItem> = emptyList()
     private var filteredPokemonList: List<PokemonListItem> = emptyList()
-    private var currentFilterQuery: String = ""
     private val favoriteStateMap = mutableMapOf<Int, Boolean>()
+    // Firebase
+    private val userId = FirebaseAuth.getInstance().currentUser?.uid
+    private val favoritesRef = FirebaseDatabase.getInstance().getReference("users/$userId/favorites")
 
     private val VIEW_TYPE_POKEMON = 0
     private val VIEW_TYPE_PROGRESS_BAR = 1
 
     private var isLoading = false
-    private var isFav = false
 
     fun setLoading(loading: Boolean) {
         isLoading = loading
@@ -57,14 +53,8 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     val parts = filteredPokemonList[position].url.split("/")
                     val pokemonNumber = parts[parts.size - 2].toInt()
 
-                    val pokemonDetails = PokemonListItem(
-                        name = filteredPokemonList[position].name,
-                        url = filteredPokemonList[position].url
-                    )
-
                     // Call the item click listener with the Pokemon number
                     itemClickListener?.onItemClick(pokemonNumber)
-                    toggleFavorite(pokemonNumber, pokemonDetails)
                 }
             }
         }
@@ -84,8 +74,6 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             binding.favoriteButton.setOnClickListener {
                 val position = adapterPosition
-                binding.favoriteButton.isChecked = isFav
-                isFav = !isFav
                 if (position != RecyclerView.NO_POSITION) {
                     val parts = filteredPokemonList[position].url.split("/")
                     val pokemonNumber = parts[parts.size - 2].toInt()
@@ -151,29 +139,7 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun addData(newPokemonList: List<PokemonListItem>) {
-        // Append new data to the existing list
-        pokemonList = pokemonList + newPokemonList
-        // Apply the current filter to the updated list
-        filter(currentFilterQuery)
-    }
-
-    fun replaceData(newPokemonList: List<PokemonListItem>) {
-        // Append new data to the existing list
         pokemonList = newPokemonList
-        // Apply the current filter to the updated list
-        filter(currentFilterQuery)
-    }
-
-    fun filter(query: String) {
-        currentFilterQuery = query
-        val lowerCaseQuery = query.toLowerCase(Locale.getDefault())
-        filteredPokemonList = if (query.isEmpty()) {
-            pokemonList
-        } else {
-            pokemonList.filter { pokemon ->
-                pokemon.name.toLowerCase(Locale.getDefault()).contains(lowerCaseQuery)
-            }
-        }
         notifyDataSetChanged()
     }
 
@@ -187,7 +153,7 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     fun toggleFavorite(pokemonNumber: Int, pokemonDetails: PokemonListItem) {
-        val isFavorite = isFav
+        val isFavorite = getFavoriteState(pokemonNumber)
 
         if (isFavorite) {
             // Remove from favorites
