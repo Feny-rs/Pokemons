@@ -9,6 +9,7 @@ import com.feny.pokemons.databinding.PokemonItemBinding
 import com.feny.pokemons.databinding.ProgressBarBinding
 import com.feny.pokemons.model.PokemonListItem
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PokemonAdapter :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

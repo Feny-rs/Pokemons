@@ -1,7 +1,7 @@
 package com.feny.pokemons.model
 
 data class PokemonListResponse(
-    val results: List<PokemonListItem>
+    val results: ArrayList<PokemonListItem> = arrayListOf()
 )
 
 data class PokemonListItem(
