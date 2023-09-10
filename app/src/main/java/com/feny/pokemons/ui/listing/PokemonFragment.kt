@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -28,9 +29,9 @@ class PokemonFragment : Fragment() {
     private lateinit var binding: FragmentPokemonBinding
     private lateinit var adapter: PokemonAdapter
     private lateinit var service: PokemonService
-    private var listPokemon : ArrayList<PokemonListItem> = arrayListOf()
-    private var currentPage = 0
-    private val pageSize = 20
+    private var listPokemon: ArrayList<PokemonListItem> = arrayListOf()
+    private var currentPage = 0 // Start from the first page
+    private val pageSize = 20 // Number of items to load per page
     private var isLoading = false
     private var isLastPage = false
 
@@ -54,9 +55,7 @@ class PokemonFragment : Fragment() {
         adapter.setOnItemClickListener(object : PokemonAdapter.OnItemClickListener {
             override fun onItemClick(pokemonNumber: Int) {
                 // Handle item click here, you have the Pokemon number
-                val action = PokemonFragmentDirections.actionListFragmentToDetailPokemonFragment(
-                    pokemonNumber
-                )
+                val action = PokemonFragmentDirections.actionListFragmentToDetailPokemonFragment(pokemonNumber)
                 findNavController().navigate(action)
             }
         })
@@ -94,29 +93,40 @@ class PokemonFragment : Fragment() {
 
         service = retrofit.create(PokemonService::class.java)
 
-        // Fetch the initial page of data
-        fetchNextPage()
-
         binding.rvPokemon.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) { // Check for scroll down
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    val visibleItemCount = layoutManager.childCount
+                    val totalItemCount = layoutManager.itemCount
+                    val pastItemsVisible = layoutManager.findFirstVisibleItemPosition()
 
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val totalItemCount = layoutManager.itemCount
-                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-
-                // Check if it's time to load the next page
-                if (!isLoading && !isLastPage && totalItemCount <= (lastVisibleItem + 5)) {
-                    isLoading = true
-                    fetchNextPage()
+                    if (!isLoading && !isLastPage && visibleItemCount + pastItemsVisible >= totalItemCount) {
+                        // Load more data when scrolling to the end
+                        fetchNextPage()
+                        adapter.setLoading(true)
+                    }
                 }
             }
         })
+        // Load the initial data
+        if (listPokemon.isEmpty()){
+            fetchNextPage()
+        } else {
+            adapter.addData(listPokemon)
+        }
     }
 
-    // Function to fetch the next page of data
     private fun fetchNextPage() {
-        val call = service.getPokemonList(currentPage, pageSize)
+        if (isLoading || isLastPage) {
+            return
+        }
+
+        isLoading = true
+        adapter.setLoading(true)
+        val call = service.getPokemonList(currentPage * pageSize, pageSize)
+
+        Log.d("Pagination", "Requesting page $currentPage")
 
         call.enqueue(object : Callback<PokemonListResponse> {
             override fun onResponse(
@@ -124,7 +134,9 @@ class PokemonFragment : Fragment() {
                 response: Response<PokemonListResponse>
             ) {
                 if (response.isSuccessful) {
+                    adapter.setLoading(false)
                     val newPokemonList = response.body()?.results ?: emptyList()
+                    listPokemon.addAll(newPokemonList)
                     if (newPokemonList.isNotEmpty()) {
                         adapter.addData(newPokemonList)
                         currentPage++
@@ -136,8 +148,8 @@ class PokemonFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<PokemonListResponse>, t: Throwable) {
-                // Handle network request failure
                 isLoading = false
+                adapter.setLoading(false)
             }
         })
     }
