@@ -18,6 +18,10 @@ import com.feny.pokemons.model.PokemonListItem
 import com.feny.pokemons.model.PokemonListResponse
 import com.feny.pokemons.presenter.PokemonService
 import com.feny.pokemons.ui.adapter.PokemonAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +55,8 @@ class PokemonFragment : Fragment() {
         adapter = PokemonAdapter()
         binding.rvPokemon.layoutManager = LinearLayoutManager(requireContext())
         binding.rvPokemon.adapter = adapter
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val databaseRef: DatabaseReference = database.getReference("favorites")
 
         adapter.setOnItemClickListener(object : PokemonAdapter.OnItemClickListener {
             override fun onItemClick(pokemonNumber: Int) {
@@ -58,7 +64,21 @@ class PokemonFragment : Fragment() {
                 val action = PokemonFragmentDirections.actionListFragmentToDetailPokemonFragment(pokemonNumber)
                 findNavController().navigate(action)
             }
+
+            override fun onAddFavorite(pokemonNumber: Int) {
+                // Handle adding or removing favorites here
+                val isFavorite = adapter.getFavoriteState(pokemonNumber)
+                databaseRef.child(pokemonNumber.toString()).setValue(true)
+
+                if (isFavorite) {
+                    databaseRef.child(pokemonNumber.toString()).removeValue()
+                } else {
+                    databaseRef.child(pokemonNumber.toString()).setValue(true)
+                }
+                Log.d("add fav: ", pokemonNumber.toString())
+            }
         })
+
 
         val editText = binding.searchInput.keyword
         val endDrawable = editText.compoundDrawablesRelative[2]

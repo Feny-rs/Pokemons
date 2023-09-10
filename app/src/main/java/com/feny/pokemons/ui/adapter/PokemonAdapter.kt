@@ -8,22 +8,28 @@ import com.bumptech.glide.Glide
 import com.feny.pokemons.databinding.PokemonItemBinding
 import com.feny.pokemons.databinding.ProgressBarBinding
 import com.feny.pokemons.model.PokemonListItem
+import com.feny.pokemons.model.PokemonResponse
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PokemonAdapter :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    // Firebase
+    private val userId = FirebaseAuth.getInstance().currentUser?.uid
+    private val favoritesRef = FirebaseDatabase.getInstance().getReference("users/$userId/favorites")
 
     private var pokemonList: List<PokemonListItem> = emptyList()
     private var filteredPokemonList: List<PokemonListItem> = emptyList()
     private var currentFilterQuery: String = ""
-    private var favoritePokemonSet = mutableSetOf<Int>()
-    private var favoritePokemonIds: List<Int> = emptyList()
+    private val favoriteStateMap = mutableMapOf<Int, Boolean>()
 
     private val VIEW_TYPE_POKEMON = 0
     private val VIEW_TYPE_PROGRESS_BAR = 1
 
     private var isLoading = false
+    private var isFav = false
 
     fun setLoading(loading: Boolean) {
         isLoading = loading
@@ -32,6 +38,7 @@ class PokemonAdapter :
 
     interface OnItemClickListener {
         fun onItemClick(pokemonNumber: Int)
+        fun onAddFavorite(pokemonNumber: Int)
     }
 
     private var itemClickListener: OnItemClickListener? = null
@@ -49,7 +56,6 @@ class PokemonAdapter :
                 if (position != RecyclerView.NO_POSITION) {
                     val parts = filteredPokemonList[position].url.split("/")
                     val pokemonNumber = parts[parts.size - 2].toInt()
-
                     // Call the item click listener with the Pokemon number
                     itemClickListener?.onItemClick(pokemonNumber)
                 }
@@ -69,17 +75,18 @@ class PokemonAdapter :
                 .load(imageUrl)
                 .into(binding.pokemonImage)
 
-            binding.favoriteButton.isChecked = favoritePokemonSet.contains(pokemonNumber)
+            binding.favoriteButton.isChecked = isFav
             binding.favoriteButton.setOnClickListener {
-                val isFavorite = binding.favoriteButton.isChecked
-                if (isFavorite) {
-                    favoritePokemonSet.add(pokemonNumber)
-                } else {
-                    favoritePokemonSet.remove(pokemonNumber)
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val parts = filteredPokemonList[position].url.split("/")
+                    val pokemonNumber = parts[parts.size - 2].toInt()
+                    val pokemonDetails = PokemonListItem(
+                        name = filteredPokemonList[position].name,
+                        url = filteredPokemonList[position].url
+                    )
+                    toggleFavorite(pokemonNumber, pokemonDetails)
                 }
-                notifyDataSetChanged()
-
-                // TODO: Update the list of favorite Pokemon in your data storage (SharedPreferences or Room).
             }
         }
     }
@@ -142,6 +149,13 @@ class PokemonAdapter :
         filter(currentFilterQuery)
     }
 
+    fun replaceData(newPokemonList: List<PokemonListItem>) {
+        // Append new data to the existing list
+        pokemonList = newPokemonList
+        // Apply the current filter to the updated list
+        filter(currentFilterQuery)
+    }
+
     fun filter(query: String) {
         currentFilterQuery = query
         val lowerCaseQuery = query.toLowerCase(Locale.getDefault())
@@ -155,8 +169,26 @@ class PokemonAdapter :
         notifyDataSetChanged()
     }
 
-    fun setFavoritePokemonIds(ids: List<Int>) {
-        favoritePokemonIds = ids
+    fun getFavoriteState(pokemonNumber: Int): Boolean {
+        return favoriteStateMap[pokemonNumber] ?: false
+    }
+
+    fun setFavoriteState(favorites: List<PokemonResponse>, isFavorite: Boolean) {
+        favoriteStateMap[favorites[0].id] = isFavorite
         notifyDataSetChanged()
+    }
+
+    fun toggleFavorite(pokemonNumber: Int, pokemonDetails: PokemonListItem) {
+        val isFavorite = isFav
+
+        if (isFavorite) {
+            // Remove from favorites
+            favoritesRef.child(pokemonNumber.toString()).removeValue()
+            isFav = false
+        } else {
+            // Add to favorites
+            favoritesRef.child(pokemonNumber.toString()).setValue(pokemonDetails)
+            isFav = true
+        }
     }
 }
