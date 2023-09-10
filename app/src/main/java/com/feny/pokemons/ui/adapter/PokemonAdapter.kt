@@ -56,15 +56,8 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 if (position != RecyclerView.NO_POSITION) {
                     val parts = filteredPokemonList[position].url.split("/")
                     val pokemonNumber = parts[parts.size - 2].toInt()
-
-                    val pokemonDetails = PokemonListItem(
-                        name = filteredPokemonList[position].name,
-                        url = filteredPokemonList[position].url
-                    )
-
                     // Call the item click listener with the Pokemon number
                     itemClickListener?.onItemClick(pokemonNumber)
-                    toggleFavorite(pokemonNumber, pokemonDetails)
                 }
             }
         }
@@ -82,10 +75,9 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .load(imageUrl)
                 .into(binding.pokemonImage)
 
+            binding.favoriteButton.isChecked = isFav
             binding.favoriteButton.setOnClickListener {
                 val position = adapterPosition
-                binding.favoriteButton.isChecked = isFav
-                isFav = !isFav
                 if (position != RecyclerView.NO_POSITION) {
                     val parts = filteredPokemonList[position].url.split("/")
                     val pokemonNumber = parts[parts.size - 2].toInt()
@@ -192,9 +184,11 @@ class PokemonAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (isFavorite) {
             // Remove from favorites
             favoritesRef.child(pokemonNumber.toString()).removeValue()
+            isFav = false
         } else {
             // Add to favorites
             favoritesRef.child(pokemonNumber.toString()).setValue(pokemonDetails)
+            isFav = true
         }
     }
 }

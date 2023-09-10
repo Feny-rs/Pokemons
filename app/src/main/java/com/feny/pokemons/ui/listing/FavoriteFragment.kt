@@ -88,7 +88,7 @@ class FavoriteFragment : Fragment() {
             val call = service.getPokemonDetails(pokemonId)
             calls.add(call)
         }
-
+        adapter.setLoading(true)
         // Execute all calls concurrently using Coroutine's async
         GlobalScope.launch(Dispatchers.IO) {
             val deferredResults = calls.map { async { it.execute() } }
@@ -115,6 +115,7 @@ class FavoriteFragment : Fragment() {
                 adapter.replaceData(pokemonList)
             }
         }
+        adapter.setLoading(false)
     }
 
 }
