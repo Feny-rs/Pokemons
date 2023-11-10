@@ -54,6 +54,7 @@ class MainFeaturesView : AppCompatActivity() {
         // The Navigation component will handle the initial destination defined in your graph.
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         // Use the NavController to handle the back button
         if (!navController.popBackStack()) {

@@ -1,0 +1,78 @@
+# Versions
+[versions]
+appVersionName = "1.0.0"
+appVersionCode = "1"
+coreKtxVersion = "1.12.0"
+appCompatVersion = "1.6.1"
+materialVersion = "1.10.0"
+constraintLayoutVersion = "2.1.4"
+junitVersion = "4.13.2"
+espressoVersion = "3.5.1"
+lottieVersion = "5.0.3"
+firebaseBomVersion = "32.2.3"
+firebaseAnalyticsKtxVersion = "32.2.3"
+firebaseAuthVersion = "22.2.0"
+firebaseFirestoreVersion = "24.9.1"
+firebaseDatabaseVersion = "20.3.0"
+glideVersion = "4.12.0"
+navigationFragmentKtxVersion = "2.7.5"
+navigationUiKtxVersion = "2.7.5"
+retrofitVersion = "2.2.0"
+rxandroidVersion = "2.0.1"
+rxjavaVersion = "2.1.7"
+loggingVersion = "3.11.0"
+sectionedVersion = "1.2.0"
+picassoVersion = "2.5.2"
+kotlinCoroutinesCore = "1.5.0"
+kotlinCoroutinesAndroid = "1.6.4"
+paletteKtx = "1.0.0"
+navigationVersion = "2.7.5"
+roomVersion = "2.6.0"
+implementationTestVersion = "1.1.5"
+
+androidGradlePlugin = "7.2.2"
+kotlin = "1.7.10"
+googleServiceVersion = "4.4.0"
+
+# Libraries
+[libraries]
+coreKtx = { module = "androidx.core:core-ktx", version = "$versions.coreKtxVersion" }
+appCompat = { module = "androidx.appcompat:appcompat", version = "$versions.appCompatVersion" }
+material = { module = "com.google.android.material:material", version = "$versions.materialVersion" }
+constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "$versions.constraintLayoutVersion" }
+espressoCore = { module = "androidx.test.espresso:espresso-core", version = "$versions.espressoVersion" }
+lottie = { module = "com.airbnb.android:lottie", version = "$versions.lottieVersion" }
+firebaseBom = { module = "com.google.firebase:firebase-bom", version = "$versions.firebaseBomVersion" }
+firebaseAnalyticsKtx = { module = "com.google.firebase:firebase-analytics-ktx", version = "$versions.firebaseAnalyticsKtxVersion" }
+firebaseAuth = { module = "com.googlew.firebase:firebase-auth", version = "$versions.firebaseAuthVersion" }
+firebase = { module = "com.googlew.firebase:firebase-auth" }
+firebaseFirestoreKtx = { module = "com.google.firebase:firebase-firestore-ktx", version = "$versions.firebaseFirestoreVersion" }
+firebaseDatabaseKtx = { module = "com.google.firebase:firebase-database-ktx", version = "$versions.firebaseDatabaseVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version = "$versions.glideVersion" }
+glideCompiler = { module = "com.github.bumptech.glide:compiler", version = "$versions.glideVersion"}
+navigationUiKtx = { module = "androidx.navigation:navigation-ui-ktx", version = "$versions.navigationUiKtxVersion" }
+picasso = { module = "com.squareup.picasso:picasso", version = "$versions.picassoVersion" }
+roomTesting = { module = "androidx.room:room-testing", version = "$versions.roomVersion" }
+roomKtx = { module = "androidx.room:room-ktx", version = "$versions.roomVersion" }
+roomRuntime = { module = "androidx.room:room-runtime", version = "$versions.roomVersion" }
+testImplementation = { module = "junit:junit", version = "$versions.junitVersion" }
+androidTestImplementation = { module = "androidx.test.ext:junit", version = "$versions.implementationTestVersion" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version = "$versions.retrofitVersion" }
+adapterRxJava = { module = "com.squareup.retrofit2:adapter-rxjava2", version = "$versions.retrofitVersion" }
+converterGson = { module = "com.squareup.retrofit2:converter-gson", version = "$versions.retrofitVersion" }
+rxAndroid = { module = "io.reactivex.rxjava2:rxandroid", version = "$versions.rxandroidVersion" }
+rxJava = { module = "io.reactivex.rxjava2:rxjava", version = "$versions.rxjavaVersion" }
+loggingInterceptor = { module = "com.squareup.okhttp3:logging-interceptor", version = "$versions.loggingVersion" }
+kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "$versions.kotlinCoroutinesCore" }
+kotlinxCoroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version = "$versions.kotlinCoroutinesAndroid" }
+palette = { module = "androidx.palette:palette-ktx", version = "$versions.paletteKtx"}
+navigationFragmentKtx = { module = "androidx.navigation:navigation-fragment-ktx", version = "2.7.5"}
+
+# Plugins
+[plugins]
+androidApplication = { id = "com.android.application", version = "$versions.androidGradlePlugin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version = "$versions.kotlin" }
+googleServices = { id = "com.google.gms.google-services", version = "$versions.googleServiceVersion" }
+navigationSafeArgs = { id = "androidx.navigation.safeargs", version = "$versions.navigationVersion" }
+androidLibrary = { id = "com.android.library", version = "$versions.androidGradlePlugin" }
+kotlinKapt = { id = "kotlin-kapt" }

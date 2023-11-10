@@ -39,49 +39,46 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation libs.coreKtx
+    implementation libs.appCompat
+    implementation libs.material
+    implementation libs.constraintLayout
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'com.airbnb.android:lottie:5.0.3'
+    testImplementation libs.testImplementation
+    androidTestImplementation libs.androidTestImplementation
+    androidTestImplementation libs.espressoCore
+    implementation libs.lottie
 
     //firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.2.3"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation 'com.google.firebase:firebase-auth'
-    implementation 'com.google.firebase:firebase-auth-ktx:22.1.1'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.7.1'
-    implementation 'com.google.firebase:firebase-database-ktx:20.2.2'
+    implementation(platform(libs.firebaseBom))
+    implementation libs.firebaseAnalyticsKtx
+    implementation libs.firebase
+    implementation libs.firebaseAuth
+    implementation libs.firebaseFirestoreKtx
+    implementation libs.firebaseDatabaseKtx
 
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+    implementation libs.glide
+    annotationProcessor libs.glideCompiler
 
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation libs.retrofit
+    implementation libs.adapterRxJava
+    implementation libs.converterGson
 
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    implementation libs.rxAndroid
+    implementation libs.rxJava
 
-    implementation "com.squareup.okhttp3:logging-interceptor:$loggingVersion"
+    implementation libs.loggingInterceptor
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation libs.kotlinxCoroutinesCore
+    implementation libs.kotlinxCoroutinesAndroid
+    implementation libs.palette
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation libs.navigationFragmentKtx
+    implementation libs.navigationUiKtx
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.4.0-alpha10"
-    implementation "androidx.navigation:navigation-ui-ktx:2.4.0-alpha10"
+    implementation libs.roomRuntime
+    implementation libs.roomKtx
+    androidTestImplementation libs.roomTesting
 
-    implementation "androidx.room:room-runtime:2.3.0"
-    implementation "androidx.room:room-ktx:2.3.0"
-    androidTestImplementation "androidx.room:room-testing:2.3.0"
-
-    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    implementation libs.picasso
 }
